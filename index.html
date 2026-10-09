@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#160f2b">
+<title>For Hemmuu ♡</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
+:root{--ink:#fff7fc;--muted:#d7c5e6;--pink:#ff83b7;--rose:#ffb4d2;--violet:#c9a7ff;--glass:rgba(255,255,255,.075);--line:rgba(255,255,255,.16)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;background:#130e25;color:var(--ink);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-3;background:radial-gradient(ellipse at 15% 15%,#582653 0,transparent 40%),radial-gradient(ellipse at 85% 80%,#263c70 0,transparent 42%),linear-gradient(145deg,#130e25,#211333 55%,#101b34)}
+body:after{content:"";position:fixed;inset:0;z-index:-2;opacity:.22;pointer-events:none;background-image:radial-gradient(#fff 1px,transparent 1.5px),radial-gradient(#ffc8e4 1px,transparent 1.5px);background-size:73px 73px,113px 113px;background-position:0 0,30px 45px}
+button{font:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid var(--violet);outline-offset:4px}
+button:disabled{opacity:.5;cursor:not-allowed}
+.wrap{width:min(900px,92vw);margin:auto;padding:24px 0 36px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;color:var(--muted);font-size:.8rem}
+.pill{border:1px solid var(--line);background:#ffffff0c;padding:9px 13px;border-radius:999px;backdrop-filter:blur(10px)}
+.progress{height:4px;border-radius:99px;background:#ffffff17;overflow:hidden;margin-bottom:18px}
+.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--violet));transition:width .45s}
+.scene{display:none;position:relative;min-height:min(690px,78vh);padding:clamp(24px,6vw,65px);border:1px solid var(--line);border-radius:32px;background:linear-gradient(145deg,rgba(255,255,255,.105),rgba(255,255,255,.035));box-shadow:0 30px 100px #0003;backdrop-filter:blur(15px);text-align:center;overflow:hidden;animation:enter .55s ease both}
+.scene:before{content:"";position:absolute;width:250px;height:250px;border-radius:50%;background:#f66eaa13;filter:blur(4px);top:-130px;right:-80px;pointer-events:none}
+.scene.active{display:flex;flex-direction:column;align-items:center;justify-content:center}
+.eyebrow{text-transform:uppercase;letter-spacing:.19em;font-size:.7rem;font-weight:700;color:var(--rose);margin:0 0 18px}
+h1,h2,h3,p{margin-top:0}
+h1,h2{font-family:'Playfair Display',serif;font-weight:500;letter-spacing:-.035em}
+h1{font-size:clamp(3.2rem,10vw,6.5rem);line-height:.98;margin-bottom:22px}
+h2{font-size:clamp(2.2rem,6vw,4rem);line-height:1.08;margin-bottom:20px}
+h3{font-size:1.1rem;margin-bottom:8px}
+.script{font-family:'Playfair Display',serif;font-style:italic;color:var(--pink)}
+.lead{max-width:590px;font-size:clamp(1rem,2.5vw,1.18rem);line-height:1.9;color:#f0e4f3}
+.big-icon{font-size:clamp(4rem,11vw,7rem);line-height:1.2;margin:8px 0 20px;filter:drop-shadow(0 0 24px #ff83b733);animation:float 3.5s ease-in-out infinite}
+.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:22px}
+.btn{border:1px solid transparent;border-radius:999px;padding:14px 22px;font-weight:700;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-3px)}
+.primary{background:linear-gradient(110deg,#ff6da7,#c69cff);color:#26112b;box-shadow:0 10px 30px #ff83b72a}
+.secondary{color:var(--ink);border-color:var(--line);background:#ffffff0a}
+.tiny{font-size:.82rem;color:#bca8d0;margin-top:18px;line-height:1.6}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;margin:20px 0}
+.card{padding:22px 16px;border:1px solid var(--line);border-radius:20px;background:#ffffff09;text-align:left}
+.card .emoji{display:block;font-size:2rem;margin-bottom:13px}
+.card p{color:var(--muted);font-size:.9rem;line-height:1.65;margin:0}
+.chat{width:min(450px,100%);display:grid;gap:10px;margin:18px auto}
+.bubble{max-width:86%;padding:13px 16px;border:1px solid #ffffff13;border-radius:18px;background:#ff9fc21c;text-align:left;line-height:1.55}
+.bubble:nth-child(even){justify-self:end;background:#bba0ff1c}
+.note{width:100%;max-width:630px;text-align:left;white-space:pre-line;padding:clamp(22px,5vw,38px);border-radius:6px 24px 12px 24px;background:#fff8ef;color:#493149;box-shadow:0 22px 60px #0002;line-height:1.9;transform:rotate(-.3deg)}
+.note .script{color:#b74478;display:block;font-size:1.5rem;margin-bottom:12px}
+.note strong{color:#a13e73}
+.reasons{display:grid;gap:10px;list-style:none;padding:0;text-align:left;width:min(520px,100%);margin:16px 0}
+.reasons li{border:1px solid var(--line);border-radius:15px;background:#ffffff08;padding:13px 16px;line-height:1.6}
+.reasons li:before{content:"✦";color:var(--pink);margin-right:12px}
+.big-question{font-size:clamp(2.8rem,9vw,5.5rem);font-family:'Playfair Display',serif;line-height:1.05}
+.answer{min-height:56px;margin-top:22px;max-width:520px;line-height:1.8;color:#ffe2ef}
+footer{text-align:center;color:#9d8aaf;font-size:.8rem;padding:18px 8px 0}
+.spark{position:fixed;z-index:10;pointer-events:none;font-size:20px;animation:burst 1.8s ease-out forwards}
+#soundBtn{position:fixed;right:16px;bottom:16px;z-index:12;border:1px solid var(--line);border-radius:99px;background:#221833;color:white;padding:10px 14px;font-size:.8rem}
+@keyframes enter{from{opacity:0;transform:translateY(14px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(3deg)}}
+@keyframes burst{from{opacity:1;transform:translateY(0) scale(.6) rotate(0)}to{opacity:0;transform:translateY(-150px) scale(1.5) rotate(28deg)}}
+@media(max-width:620px){.wrap{width:94vw;padding-top:14px}.scene{min-height:75vh;padding:28px 19px;border-radius:24px}.cards{grid-template-columns:1fr;max-width:390px}.card{display:flex;gap:14px;align-items:flex-start;padding:15px}.card .emoji{margin:0}.topbar{font-size:.72rem}.note{font-size:.95rem}.pill{padding:8px 10px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="topbar"><span class="pill">✦ a little universe, just for you</span><span class="pill" id="counter">01 / 12</span></div>
+  <div class="progress" aria-label="Surprise progress"><span id="bar"></span></div>
+
+  <section class="scene active">
+    <p class="eyebrow">pssst... Hemmuu, this is for you</p>
+    <div class="big-icon">🌙💗</div>
+    <h1>Hey, <span class="script">Hemmuu.</span></h1>
+    <p class="lead">I made you a tiny universe out of words, feelings, and a little bit of courage.</p>
+    <p class="lead">No photos. No fancy things. Just something from my heart to yours. ♡</p>
+    <button class="btn primary next">Step into our little world ✨</button>
+    <p class="tiny">Best experienced slowly. There are 12 little chapters waiting for you.</p>
+  </section>
+
+  <section class="scene">
+    <p class="eyebrow">chapter 01 · a tiny secret</p><div class="big-icon">🤫</div>
+    <h2>This page has a <span class="script">secret.</span></h2>
+    <p class="lead">It isn't hidden in the code. It isn't in the stars. It's in the person who thought of you while making every little detail.</p>
+    <p class="lead">Can you guess who? ♡</p>
+    <button class="btn primary next">I have a little idea →</button>
+  </section>
+
+  <section class="scene">
+    <p class="eyebrow">chapter 02 · the plot twist</p><div class="big-icon">🫶</div>
+    <h2>It's <span class="script">you.</span> It's always you.</h2>
+    <p class="lead">Somehow, in the middle of normal days and random conversations, you became someone I look forward to.</p>
+    <p class="lead">A notification from you can change my mood. A small moment with you can stay in my mind for hours.</p>
+    <button class="btn primary next">Okay, that's kind of cute →</button>
+  </section>
+
+  <section class="scene">
+    <p class="eyebrow">chapter 03 · little things, big feelings</p>
+    <h2>Our little <span class="script">universe.</span></h2>
+    <p class="lead">If I could keep a few feelings in a tiny glass jar, they would look something like this.</p>
+    <div class="cards">
+      <div class="card"><span class="emoji">☁️</span><div><h3>The comfort</h3><p>When talking to you makes a long day feel lighter.</p></div></div>
+      <div class="card"><span class="emoji">🌷</span><div><h3>The softness</h3><p>Those small moments that somehow mean so much.</p></div></div>
+      <div class="card"><span class="emoji">✨</span><div><h3>The magic</h3><p>How ordinary moments become favourite memories.</p></div></div>
+    </div>
+    <button class="btn primary next">Keep this little jar safe →</button>
+  </section>
+
+  <section class="scene">
+    <p class="eyebrow">chapter 04 · classified messages</p>
+    <h2>Our very serious <span class="script">conversations.</span></h2>
+    <div class="chat">
+      <div class="bubble">Me: Hemmuuuuuu 🥹</div>
+      <div class="bubble">You: What happened now? 😂</div>
+      <div class="bubble">Me: Nothing. I just wanted your attention.</div>
+      <div class="bubble">You: You are impossible 😭</div>
+      <div class="bubble">Me: And yet... here I am, smiling at my screen. 💗</div>
+    </div>
+    <p class="tiny">Psst: swap these for your actual inside jokes if you want to make it even more yours.</p>
+    <button class="btn primary next">Next chapter, please →</button>
+  </section>
+
+  <section class="scene">
+    <p class="eyebrow">chapter 05 · a list with no end</p>
+    <h2>Little reasons I <span class="script">adore you.</span></h2>
+    <ul class="reasons">
+      <li>Your presence makes things feel a little less heavy.</li>
+      <li>You can make me smile without even trying.</li>
+      <li>I like the little details that make you, you.</li>
+      <li>I love how one simple conversation can become a favourite part of my day.</li>
+      <li>And honestly? This list could go on forever.</li>
+    </ul>
+    <button class="btn primary next">There is more in my heart →</button>
+  </section>
+
+  <section class="scene">
+    <p class="eyebrow">chapter 06 · a small pause</p><div class="big-icon">🌌</div>
+    <h2>If the world gets <span class="script">too loud...</span></h2>
+    <p class="lead">I hope you remember that you don't have to be perfect to be loved, impressive to be appreciated, or okay every single day.</p>
+    <p class="lead">You deserve gentle days, genuine laughter, peaceful sleep, and people who make room for the real you.</p>
+    <p class="lead">I hope life is kind to you, Hemmuu. Always.</p>
+    <button class="btn primary next">I needed that little reminder ♡</button>
+  </section>
+
+  <section class="scene">
+    <p class="eyebrow">chapter 07 · from my heart</p>
+    <h2>A little <span class="script">letter.</span></h2>
+    <article class="note"><span class="script">My dearest Hemmuu,</span>
+I don't know exactly when you became one of my favourite thoughts, but somewhere along the way, you did.
+
+Thank you for the laughs, the little moments, the comfort, and all the things you may not even realise you do. You have a way of making ordinary days feel special.
+
+I can't promise that every day will be perfect, but I can promise that what I'm telling you here is sincere. I wanted to make something that would make you smile and remind you that you matter to me.
+
+So if you ever have a difficult day, come back to this little corner and remember: someone is cheering for you, thinking of you, and wishing you every beautiful thing.
+
+<span class="script">With a heart full of feelings,</span><strong>Your girl ♡</strong></article>
+    <button class="btn primary next">One more tiny thing... 💌</button>
+  </section>
+
+  <section class="scene">
+    <p class="eyebrow">chapter 08 · a confession loading...</p><div class="big-icon">💓</div>
+    <h2>Okay, deep <span class="script">breath.</span></h2>
+    <p class="lead">I tried to act normal about you.</p>
+    <p class="lead">I tried to be casual.</p>
+    <p class="lead">I tried to keep this little feeling to myself...</p>
+    <p class="lead">And then I made an entire website. So, clearly, that plan didn't work. 😭💗</p>
+    <button class="btn primary next">Here comes the honest part →</button>
+  </section>
+
+  <section class="scene">
+    <p class="eyebrow">chapter 09 · the honest part</p><div class="big-icon">🩷</div>
+    <h2>You mean more than <span class="script">you know.</span></h2>
+    <p class="lead">You have become someone I care about in a way that feels both exciting and a little scary.</p>
+    <p class="lead">I don't need a perfect movie moment. I just wanted to be brave enough to say that you are special to me, Hemmuu.</p>
+    <p class="lead">And yes... I think I like you. A lot. ♡</p>
+    <button class="btn primary next">Ready for one tiny question? →</button>
+  </section>
+
+  <section class="scene">
+    <p class="eyebrow">chapter 10 · the question</p><div class="big-icon">💌</div>
+    <p class="tiny">I wrote this part with very shaky imaginary hands.</p>
+    <div class="big-question">Will you be<br><span class="script">my person?</span></div>
+    <p class="lead">No pressure. No perfect answer needed. I just wanted you to know how I feel. 💗</p>
+    <div class="actions">
+      <button class="btn primary" id="yesBtn">Yes, let's see where this goes 💖</button>
+      <button class="btn secondary" id="timeBtn">I need a little time 🌷</button>
+    </div>
+    <p class="answer" id="answer" aria-live="polite"></p>
+    <button class="btn secondary next" id="continueBtn" style="display:none">One last chapter →</button>
+  </section>
+
+  <section class="scene">
+    <p class="eyebrow">chapter 11 · whatever your answer</p><div class="big-icon">🌙🫶</div>
+    <h2>Thank you for being <span class="script">you.</span></h2>
+    <p class="lead">Whatever happens next, I'm glad our paths crossed. I hope you keep being your wonderful, weird, thoughtful, lovely self.</p>
+    <p class="lead">This little universe was made for you, Hemmuu — and it will always be a reminder that someone wanted to make you feel special today.</p>
+    <p class="lead">You are appreciated. You are cared for. And you deserve good things. ♡</p>
+    <button class="btn primary" id="restart">Start our little universe again ↻</button>
+  </section>
+  <footer>crafted with courage, stardust & a whole lot of love ♡</footer>
+</main>
+<button id="soundBtn" type="button" aria-label="Toggle ambient twinkles">✦ Little sparkle: ON</button>
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+const counter=document.getElementById('counter'),bar=document.getElementById('bar');
+let current=0, sparklesOn=true;
+function burst(count=10){
+ if(!sparklesOn)return;
+ const symbols=['♡','✦','✧','💗','✨'];
+ for(let i=0;i<count;i++){
+  const el=document.createElement('span');el.className='spark';
+  el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  el.style.left=(5+Math.random()*90)+'vw';
+  el.style.top=(45+Math.random()*48)+'vh';
+  el.style.animationDelay=(Math.random()*.25)+'s';
+  document.body.appendChild(el);setTimeout(()=>el.remove(),1900);
+ }
+}
+function showScene(index){
+ current=(index+scenes.length)%scenes.length;
+ scenes.forEach((s,i)=>s.classList.toggle('active',i===current));
+ counter.textContent=String(current+1).padStart(2,'0')+' / '+String(scenes.length).padStart(2,'0');
+ bar.style.width=((current+1)/scenes.length*100)+'%';
+ window.scrollTo({top:0,behavior:'smooth'});burst(9);
+}
+document.querySelectorAll('.next').forEach(b=>b.addEventListener('click',()=>showScene(current+1)));
+document.getElementById('restart').addEventListener('click',()=>showScene(0));
+document.getElementById('yesBtn').addEventListener('click',()=>{
+ document.getElementById('answer').textContent='WAIT—IS THIS REAL?! 🥹💖 You just made this little corner of the internet glow brighter. Let’s take it one sweet step at a time. ♡';
+ document.getElementById('continueBtn').style.display='inline-block';burst(35);
+});
+document.getElementById('timeBtn').addEventListener('click',()=>{
+ document.getElementById('answer').textContent='Of course, Hemmuu. Take all the time you need. Your feelings matter, and there is no pressure at all. 🌷';
+ document.getElementById('continueBtn').style.display='inline-block';burst(12);
+});
+document.getElementById('continueBtn').addEventListener('click',()=>showScene(current+1));
+document.getElementById('soundBtn').addEventListener('click',e=>{
+ sparklesOn=!sparklesOn;
+ e.currentTarget.textContent=sparklesOn?'✦ Little sparkle: ON':'✦ Little sparkle: OFF';
+});
+document.addEventListener('click',e=>{
+ if(e.target.closest('button')&&sparklesOn){
+  const r=e.target.getBoundingClientRect(),el=document.createElement('span');
+  el.className='spark';el.textContent='♡';el.style.left=(r.left+r.width/2)+'px';
+  el.style.top=(r.top+r.height/2)+'px';document.body.appendChild(el);
+  setTimeout(()=>el.remove(),1900);
+ }
+});
+showScene(0);
+</script>
+</body>
+</html>
